@@ -74,6 +74,7 @@ ENABLE_KEEP_MEM_NAME          := 1       maintain channel name when (re)saving m
 ENABLE_WIDE_RX                := 1       full 18MHz to 1300MHz RX (though front-end/PA not designed for full range)
 ENABLE_TX_WHEN_AM             := 0       allow TX (always FM) when RX is set to AM
 ENABLE_F_CAL_MENU             := 0       enable/disable the radios hidden frequency calibration menu
+ENABLE_TX_UNLOCK              := 1       allow TX everywhere .. TX harmonic content will cause interference to other services and spread more HF power outside the selected Freq. Use it with your own risk !
 ENABLE_CTCSS_TAIL_PHASE_SHIFT := 1       standard CTCSS tail phase shift rather than QS's own 55Hz tone method
 ENABLE_BOOT_BEEPS             := 0       gives user audio feedback on volume knob position at boot-up
 ENABLE_SHOW_CHARGE_LEVEL      := 0       show the charge level when the radio is on charge
