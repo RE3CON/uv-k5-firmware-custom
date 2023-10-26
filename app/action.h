@@ -27,7 +27,8 @@ void ACTION_Scan(bool bRestart);
 	void ACTION_Vox(void);
 #endif
 #ifdef ENABLE_ALARM
-	//static void ACTION_AlarmOr1750(bool b1750)
+	//static 
+        void ACTION_AlarmOr1750(bool b1750)
 #endif
 #ifdef ENABLE_FMRADIO
 	void ACTION_FM(void);
