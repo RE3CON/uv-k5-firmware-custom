@@ -37,7 +37,11 @@ enum {
 	F_LOCK_CE,
 	F_LOCK_GB,
 	F_LOCK_430,
-	F_LOCK_438
+	F_LOCK_438,
+ #ifdef ENABLE_TX_UNLOCK
+	FREQ_LOCK_TX_UNLOCK,
+ #endif
+        FREQ_LOCK_LAST
 };
 
 enum {
