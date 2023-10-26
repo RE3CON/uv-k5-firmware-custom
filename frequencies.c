@@ -48,16 +48,16 @@ const freq_band_table_t frequencyBandTable[7] =
 #ifdef ENABLE_NOAA
 	const uint32_t NoaaFrequencyTable[10] =
 	{
-		16255000,
-		16240000,
-		16247500,
-		16242500,
-		16245000,
-		16250000,
-		16252500,
-		16152500,
-		16177500,
-		16327500
+		44600625,
+		44601875,
+		44603125,
+		44604375,
+		44605625,
+		44606875,
+		44608125,
+		44609375,
+		44610625,
+		44611875
 	};
 #endif
 
@@ -179,6 +179,17 @@ int TX_freq_check(const uint32_t Frequency)
 			if (Frequency >= 40000000 && Frequency < 43800000)
 				return 0;
 			break;
+		
+		#ifdef ENABLE_TX_UNLOCK
+			case FREQ_LOCK_TX_UNLOCK:
+			{
+				unsigned int i;
+				for (i = 0; i < ARRAY_SIZE(FREQ_BAND_TABLE); i++)
+					if (Frequency >= FREQ_BAND_TABLE[i].lower && Frequency < FREQ_BAND_TABLE[i].upper)
+						return 0;
+				break;
+			}
+		#endif
 	}
 
 	// dis-allowed TX frequency
