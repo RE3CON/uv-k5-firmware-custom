@@ -130,19 +130,19 @@ int TX_freq_check(const uint32_t Frequency)
 	switch (gSetting_F_LOCK)
 	{
 		case F_LOCK_OFF:
-			if (Frequency >= frequencyBandTable[BAND3_137MHz].lower && Frequency < frequencyBandTable[BAND3_137MHz].upper)
-				return 0;
-			if (Frequency >= frequencyBandTable[BAND4_174MHz].lower && Frequency < frequencyBandTable[BAND4_174MHz].upper)
-				if (gSetting_200TX)
+				if (Frequency >= 13600000 && Frequency < 17400000)
 					return 0;
-			if (Frequency >= frequencyBandTable[BAND5_350MHz].lower && Frequency < frequencyBandTable[BAND5_350MHz].upper)
-				if (gSetting_350TX && gSetting_350EN)
+				if (Frequency >= 17400000 && Frequency < 35000000)
+					if (g_setting_200_tx_enable)
+						return 0;
+				if (Frequency >= 35000000 && Frequency < 40000000)
+					if (g_setting_350_tx_enable && g_setting_350_enable)
+						return 0;
+				if (Frequency >= 40000000 && Frequency < 47000000)
 					return 0;
-			if (Frequency >= frequencyBandTable[BAND6_400MHz].lower && Frequency < frequencyBandTable[BAND6_400MHz].upper)
-				return 0;
-			if (Frequency >= frequencyBandTable[BAND7_470MHz].lower && Frequency <= 60000000)
-				if (gSetting_500TX)
-					return 0;
+				if (Frequency >= 47000000 && Frequency <= 60000000)
+					if (g_setting_500_tx_enable)
+						return 0;
 			break;
 
 		case F_LOCK_FCC:
@@ -179,16 +179,10 @@ int TX_freq_check(const uint32_t Frequency)
 			if (Frequency >= 40000000 && Frequency < 43800000)
 				return 0;
 			break;
-
 		#ifdef ENABLE_TX_UNLOCK
-			case FREQ_LOCK_TX_UNLOCK:
-			{
-				unsigned int i;
-				for (i = 0; i < ARRAY_SIZE(FREQ_BAND_TABLE); i++)
-					if (Frequency >= FREQ_BAND_TABLE[i].lower && Frequency < FREQ_BAND_TABLE[i].upper)
-						return 0;
-				break;
-			}
+		case FREQ_LOCK_TX_UNLOCK:
+				return 0;
+			break;		
 		#endif
 	}
 
