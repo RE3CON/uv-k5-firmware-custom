@@ -1,7 +1,7 @@
 ## 1o11 + fagci QSFW Mod - Spectrum Analyzer - Full Frequency Range TX/RX
 ### MULTIBAND TRANSCEIVER - [Download Releases Firmware_packed_vXX](https://github.com/RE3CON/uv-k5-firmware-custom/releases) (ready to flash)
 ##  - QuanSheng Firmware - Latest Version - UV-K5/K6, UV-5R Plus -
-<img src="https://github.com/RE3CON/uv-k5-firmware-custom/assets/35396009/433adaf0-a4d9-4faf-af09-ca089389c32c" />
+<center><img src="https://github.com/RE3CON/uv-k5-firmware-custom/assets/35396009/433adaf0-a4d9-4faf-af09-ca089389c32c" /></center>
 
 # Main features:
  - many of @OneOfEleven mods, including AM fix
