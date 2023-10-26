@@ -1,17 +1,17 @@
-## 1o11 + fagci QSFW Mod - Spectrum Analyzer - Full Frequency Range TX/RX
+# 1o11 + fagci QSFW Mod - Spectrum Analyzer - Full Frequency Range TX/RX
 ### MULTIBAND TRANSCEIVER - [Download Releases Firmware_packed_vXX](https://github.com/RE3CON/uv-k5-firmware-custom/releases) (ready to flash)
-##  - QuanSheng Firmware - Latest Version - UV-K5/K6, UV-5R Plus -
-<center><img src="https://github.com/RE3CON/uv-k5-firmware-custom/assets/35396009/433adaf0-a4d9-4faf-af09-ca089389c32c" /></center>
+##  - QuanSheng alternative Firmware - Latest Version - UV-K5/K6, UV-5R Plus -
+<center>    <img src="https://github.com/RE3CON/uv-k5-firmware-custom/assets/35396009/433adaf0-a4d9-4faf-af09-ca089389c32c" />    </center>
 
 # Main features:
  - many of @OneOfEleven mods, including AM fix
  - @fagci spectrum analyzer (**F+5** to turn on)
  - some other smaller mods introduced by [Egzumer](https://github.com/egzumer/uv-k5-firmware-custom)
- - Multiband Frequency Range RX/TX
+ - Multiband 18 MHz - 1300 MHz Frequency Range full TX UNLOCK under Hidden Menu -> F-Lock (Caution about strong interferences on other frequencies by TX)
 
  Go to [Wiki](https://github.com/egzumer/uv-k5-firmware-custom/wiki) to learn more.
 
-<img src="images/main.jpg" width=300 /><img src="images/spectrum.jpg" width=300 /><img src="images/audiobar.jpg" width=300 /><img src="images/rssibar.jpg" width=300 /><img src="https://github.com/RE3CON/uv-k5-firmware-custom/assets/35396009/529aac89-f6e7-49fd-8b63-78a98c378930" />
+<img src="images/main.jpg" width=300 /><img src="images/spectrum.jpg" width=300 /><img src="images/audiobar.jpg" width=300 /><img src="images/rssibar.jpg" width=300 /> <img src="https://github.com/RE3CON/uv-k5-firmware-custom/assets/35396009/529aac89-f6e7-49fd-8b63-78a98c378930" width=400 />
 
 
 ❗❗❗You can now calibrate the battery voltage reading in the radio menu. 
@@ -29,14 +29,15 @@ To enter the calibration:
 
 This repository is a merge of OneOfEleven custom firmware with fagci spectrum analizer plus my few changes.
 
-https://github.com/OneOfEleven/uv-k5-firmware-custom<br>
-https://github.com/fagci/uv-k5-firmware-fagci-mod/tree/refactor
+[https://github.com/OneOfEleven/uv-k5-firmware-custom](https://github.com/OneOfEleven/uv-k5-firmware-custom)<br>
+[https://github.com/fagci/uv-k5-firmware-fagci-mod/tree/refactor](https://github.com/fagci/uv-k5-firmware-fagci-mod/tree/refactor)
 
 All is a cloned and customized version of DualTachyon's open firmware found here ..
 
-https://github.com/DualTachyon/uv-k5-firmware .. a cool achievement !
+[https://github.com/DualTachyon/uv-k5-firmware](https://github.com/DualTachyon/uv-k5-firmware) .. a cool achievement !)
 
-Use this firmware at your own risk (entirely). There is absolutely no guarantee that it will work in any way shape or form on your radio(s), it may even brick your radio(s), in which case, you'd need to buy another radio.
+Use this firmware at your own risk (entirely). There is absolutely no guarantee that it will work on your radio(s). It may even brick your radio(s). In such case you'd need to open your radio and equip it (solder) with an [SWD (JTAG)](https://developer.arm.com/documentation/101636/0100/Debug-and-Trace/JTAG-SWD-Interface) interface wired directly to access the eeprom chip. IF your bootloader get messed up you'll need to do it to recover. 
+If you ever recovered the firmware in a bricked WLAN router with JTAG to USB or serial convertor, Serial Wire Debug signals are very similar to this 2 or 3 pin solution. Next to a compatible A/D hardware you need some software stuff e.g. [µVision](https://www.keil.com/demo/eval/c51.htm) [C51V961.EXE](https://armkeil.blob.core.windows.net/eval/C51V961.EXE) (107,294K) or [ST-Link](https://stm32-base.org/guides/connecting-your-debugger.html). Some [EEPROM Programmer](https://github.com/topics/eeprom-programmer) are to find on [GitHub](https://github.com/sq5bpf/baoprog).
 Anyway, have fun.
 
 # Radio performance
@@ -69,7 +70,7 @@ ENABLE_LTO                    := 1     **experimental, reduces size of compiled 
 ENABLE_UART                   := 1       without this you can't configure radio via PC !
 ENABLE_AIRCOPY                := 0       easier to just enter frequency with butts
 ENABLE_FMRADIO                := 1       WBFM VHF broadcast band receiver
-ENABLE_NOAA                   := 0       everything NOAA (receiption only in North America: Alaska, Canada, U.S.,...)
+ENABLE_NOAA                   := 0       NOAA Weather broadcast alerts (receiption only in North America: Alaska, Canada, U.S.,...) A 1050 Hz Tone call demute the speaker at the beginning of every transmission. The 10 memory channels are replaced with the first 10 PMR channels. Use Sidekey for programable second call tone or >80ms roger beep sound mod with a 1050 Hz tone.
 ENABLE_VOICE                  := 0       voice menu dialogues
 ENABLE_VOX                    := 1       Audio Micro-Voice controlled PTT
 ENABLE_ALARM                  := 0       TX alarms // BROKEN CODE?!
