@@ -268,20 +268,22 @@ void ACTION_Scan(bool bRestart)
 #endif
 
 #if defined(ENABLE_ALARM) || defined(ENABLE_TX1750)
-	static void ACTION_AlarmOr1750(const bool b1750)
-	{
-		gInputBoxIndex = 0;
-
-		#if defined(ENABLE_ALARM) && defined(ENABLE_TX1750)
-			gAlarmState = b1750 ? ALARM_STATE_TX1750 : ALARM_STATE_TXALARM;
-			gAlarmRunningCounter = 0;
-		#elif defined(ENABLE_ALARM)
-			gAlarmState          = ALARM_STATE_TXALARM;
-			gAlarmRunningCounter = 0;
-		#else
-			gAlarmState = ALARM_STATE_TX1750;
-		#endif
-
+static void ACTION_AlarmOr1750(bool b1750)
+{
+	gInputBoxIndex = 0;
+#if defined(ENABLE_ALARM) && defined(ENABLE_TX1750)
+	if (b1750) {
+		gAlarmState = ALARM_STATE_TX1750;
+	} else {
+		gAlarmState = ALARM_STATE_TXALARM;
+	}
+	gAlarmRunningCounter = 0;
+#elif defined(ENABLE_ALARM)
+	gAlarmState = ALARM_STATE_TXALARM;
+	gAlarmRunningCounter = 0;
+#else
+	gAlarmState = ALARM_STATE_TX1750;
+#endif
 		gFlagPrepareTX = true;
 
 		if (gScreenToDisplay != DISPLAY_MENU)     // 1of11 .. don't close the menu
