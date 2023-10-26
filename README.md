@@ -1,6 +1,8 @@
 ## 1o11 + fagci QSFW Mod - Spectrum Analyzer - Full Frequency Range TX/RX
 ### MULTIBAND TRANSCEIVER - [Download Releases Firmware_packed_vXX](https://github.com/RE3CON/uv-k5-firmware-custom/releases) (ready to flash)
 ##  - QuanSheng Firmware - Latest Version - UV-K5/K6, UV-5R Plus -
+<img src="https://github.com/RE3CON/uv-k5-firmware-custom/assets/35396009/433adaf0-a4d9-4faf-af09-ca089389c32c" />
+
 # Main features:
  - many of @OneOfEleven mods, including AM fix
  - @fagci spectrum analyzer (**F+5** to turn on)
@@ -9,7 +11,8 @@
 
  Go to [Wiki](https://github.com/egzumer/uv-k5-firmware-custom/wiki) to learn more.
 
-<img src="images/main.jpg" width=300 /><img src="images/spectrum.jpg" width=300 /><img src="images/audiobar.jpg" width=300 /><img src="images/rssibar.jpg" width=300 />
+<img src="images/main.jpg" width=300 /><img src="images/spectrum.jpg" width=300 /><img src="images/audiobar.jpg" width=300 /><img src="images/rssibar.jpg" width=300 /><img src="https://github.com/RE3CON/uv-k5-firmware-custom/assets/35396009/529aac89-f6e7-49fd-8b63-78a98c378930" />
+
 
 ❗❗❗You can now calibrate the battery voltage reading in the radio menu. 
 
@@ -78,7 +81,7 @@ ENABLE_KEEP_MEM_NAME          := 1       maintain channel name when (re)saving m
 ENABLE_WIDE_RX                := 1       full 18MHz to 1300MHz RX (though front-end/PA not designed for full range)
 ENABLE_TX_WHEN_AM             := 1       allow TX (always FM) when RX is set to AM
 ENABLE_F_CAL_MENU             := 0       enable/disable the radios hidden frequency calibration menu
-ENABLE_TX_UNLOCK              := 1       TX all Bands 18 MHz to 1300 MHz (TX harmonic content will cause interference to other services!)
+ENABLE_TX_UNLOCK              := 1       TX all Bands 18 MHz to 1300 MHz. Hidden Menu -> F-Lock -> Select UNLOCKED. (TX harmonic content will cause interference to other services!)
 ENABLE_CTCSS_TAIL_PHASE_SHIFT := 1       standard CTCSS tail phase shift rather than QS's own 55Hz tone method
 ENABLE_BOOT_BEEPS             := 0       gives user audio feedback on volume knob position at boot-up
 ENABLE_SHOW_CHARGE_LEVEL      := 1       show the charge level when the radio is on charge
