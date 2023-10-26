@@ -20,7 +20,7 @@
 
 // the BK4819 has 2 bands it covers, 18MHz ~ 630MHz and 760MHz ~ 1300MHz
 const freq_band_table_t BX4819_band1 = { 1800000,  63000000};
-const freq_band_table_t BX4819_band2 = {84000000, 130000000};
+const freq_band_table_t BX4819_band2 = {76000000, 130000000};
 
 const freq_band_table_t frequencyBandTable[7] =
 {
@@ -48,16 +48,16 @@ const freq_band_table_t frequencyBandTable[7] =
 #ifdef ENABLE_NOAA
 	const uint32_t NoaaFrequencyTable[10] =
 	{
-		16255000,
-		16240000,
-		16247500,
-		16242500,
-		16245000,
-		16250000,
-		16252500,
-		16152500,
-		16177500,
-		16327500
+		44600625,
+		44601875,
+		44603125,
+		44604375,
+		44605625,
+		44606875,
+		44608125,
+		44609375,
+		44610625,
+		44611875
 	};
 #endif
 
@@ -133,15 +133,15 @@ int TX_freq_check(const uint32_t Frequency)
 				if (Frequency >= 13600000 && Frequency < 17400000)
 					return 0;
 				if (Frequency >= 17400000 && Frequency < 35000000)
-					if (g_setting_200_tx_enable)
+					if (gSetting_200TX)
 						return 0;
 				if (Frequency >= 35000000 && Frequency < 40000000)
-					if (g_setting_350_tx_enable && g_setting_350_enable)
+					if (gSetting_350TX && gSetting_350EN)
 						return 0;
 				if (Frequency >= 40000000 && Frequency < 47000000)
 					return 0;
 				if (Frequency >= 47000000 && Frequency <= 60000000)
-					if (g_setting_500_tx_enable)
+					if (gSetting_500TX)
 						return 0;
 			break;
 
