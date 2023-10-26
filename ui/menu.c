@@ -801,7 +801,11 @@ void UI_DisplayMenu(void)
 		case MENU_F_LOCK:
 			strcpy(String, gSubMenu_F_LOCK[gSubMenuSelection]);
 			break;
-
+#ifdef ENABLE_TX_UNLOCK
+		case FREQ_LOCK_TX_UNLOCK:
+			sprintf(str, "UNLOCKED\n%u~%u", BX4819_BAND1.lower / 100000, BX4819_BAND2.upper / 100000);
+			break;
+#endif
 		#ifdef ENABLE_F_CAL_MENU
 			case MENU_F_CALI:
 				{
