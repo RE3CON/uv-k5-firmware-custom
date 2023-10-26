@@ -1,7 +1,7 @@
 # Main features:
  - many of OneOfEleven mods, including AM fix
  - fagci spectrum analyzer (**F+5** to turn on)
- - some other smaller mods introduced by me
+ - some other smaller mods introduced by @egzumer
 
  Go to [Wiki](https://github.com/egzumer/uv-k5-firmware-custom/wiki) to learn more.
 
