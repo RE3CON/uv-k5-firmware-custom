@@ -36,7 +36,7 @@ All is a cloned and customized version of DualTachyon's open firmware found here
 
 [https://github.com/DualTachyon/uv-k5-firmware](https://github.com/DualTachyon/uv-k5-firmware) .. a cool achievement !)
 
-Use this firmware at your own risk (entirely). There is absolutely no guarantee that it will work on your radio(s). It may even brick your radio(s). In such case you'd need to open your radio and equip it (solder) with an [SWD (JTAG)](https://developer.arm.com/documentation/101636/0100/Debug-and-Trace/JTAG-SWD-Interface) interface wired directly to access the eeprom chip. IF your bootloader get messed up you'll need to do it to recover. 
+Use this firmware at your own risk (entirely). There is absolutely no guarantee that it will work on your radio(s). It may even brick your radio(s). In such case you'd need to open your radio and equip it (solder) with an [SWD (JTAG)](https://developer.arm.com/documentation/101636/0100/Debug-and-Trace/JTAG-SWD-Interface) interface wired directly to access the eeprom chip. IF your bootloader get messed up you'll need to do it to recover. <br />
 If you ever recovered the firmware in a bricked WLAN router with JTAG to USB or serial convertor, Serial Wire Debug signals are very similar to this 2 or 3 pin solution. Next to a compatible A/D hardware you need some software stuff e.g. [µVision](https://www.keil.com/demo/eval/c51.htm) [C51V961.EXE](https://armkeil.blob.core.windows.net/eval/C51V961.EXE) (107,294K) or [ST-Link](https://stm32-base.org/guides/connecting-your-debugger.html). Some [EEPROM Programmer](https://github.com/topics/eeprom-programmer) are to find on [GitHub](https://github.com/sq5bpf/baoprog).
 Anyway, have fun.
 
@@ -45,21 +45,24 @@ Anyway, have fun.
 Please note that the Quansheng UV-Kx radios are not professional quality transceivers, their
 performance is strictly limited. The RX front end has no track-tuned band pass filtering
 at all, and so are wide band/wide open to any and all signals over a large frequency range.
-
+<br />
 Using the radio in high intensity RF environments will most likely make reception anything but
-easy (AM mode will suffer far more than FM ever will), the receiver simply doesn't have a
-great dynamic range, which results in distorted AM audio with stronger RX'ed signals.
+easy (AM mode will suffer far more than FM ever will), the receiver simply doesn't have a good AM amplitude modulation circuide. A FM chip is used on a way that makes it somehow possible to receive AM signals, which results in distorted AM audio with stronger RX'ed signals. <br />
 There is nothing more anyone can do in firmware/software to improve that, once the RX gain
 adjustment I do (AM fix) reaches the hardwares limit, your AM RX audio will be all but
 non-existant (just like Quansheng's firmware).
-On the other hand, FM RX audio will/should be fine.
+<br />
+On the other hand, FM RX audio will/should be fine. On TX side with 12,5kHz and 25kHz freq mod hub depence on the receivers loudspeaker. Some say its ok while others complains it's much too quiet and could be way louder even with the maximum modification sensitivity level given for the microfons preamp. <br />
+But SSB RX does really work and actually not bad at all. No matter USB or LSB single side band carrier loose because the carrier is always produced by the receiver, usually with manual shift adjustment unless its as much as possible clear to hear. This kinds of long range small bandwidth modulations and Fagci did a really great job to realize it with these cheap walkie talkies. Quanshengs demodulator is used with automatically self shifting adjusting SSB RX through the existand low coast chipset. <br />
 
-But, they are nice toys for the price, fun to play with.
+For the price they are sold VOB China you wont find any better and Ratel, Baofeng,... - China transceivers in general for below 100 bugs will never be a Motorola, Yaesu or Icom.
+But, they are nice toys for the price, fun to play with. Sure not for DX but more than enough for your surrounding area.
 
 # User customization
 
 You can customize the firmware by enabling/disabling various compile options, this allows
 us to remove certain firmware features in order to make room in the flash for others.
+<br />
 You'll find the options at the top of "Makefile" ('0' = disable, '1' = enable) ..
 
 ```
@@ -126,10 +129,10 @@ ENABLE_COPY_CHAN_TO_VFO       := 1       copy current channel into the other VFO
 
 arm-none-eabi GCC version 10.3.1 is recommended, which is the current version on Ubuntu 22.04.03 LTS.
 Other versions may generate a flash file that is too big.
-You can get an appropriate version from: https://developer.arm.com/downloads/-/gnu-rm
+You can get an appropriate version from: [https://developer.arm.com/downloads/-/gnu-rm](https://developer.arm.com/downloads/-/gnu-rm)
 
 clang may be used but isn't fully supported. Resulting binaries may also be bigger.
-You can get it from: https://releases.llvm.org/download.html
+You can get it from: [https://releases.llvm.org/download.html](https://releases.llvm.org/download.html)
 
 # Building
 
@@ -137,6 +140,8 @@ If you have docker installed you can use `compile-with-docker.bat`, the output f
 
 
 To compile directly in windows:
+
+[Download latest Source Code](https://github.com/RE3CON/uv-k5-firmware-custom/archive/refs/heads/main.zip)
 
 1. Open windows command line and run:
     ```
@@ -148,7 +153,7 @@ To compile directly in windows:
     pip install --user --upgrade pip
     pip install crcmod
     mkdir c:\projects & cd /D c:/projects
-    git clone https://github.com/egzumer/uv-k5-firmware-custom.git
+    git clone [https://github.com/re3con/uv-k5-firmware-custom.git](https://github.com/re3con/uv-k5-firmware-custom.git)
     ```
 3. From now on you can build the firmware by going to `c:\projects\uv-k5-firmware-custom` and running `win_make.bat` or by running a command line:
     ```
