@@ -42,7 +42,7 @@ enum {
  #ifdef ENABLE_TX_UNLOCK
 	FREQ_LOCK_TX_UNLOCK,
  #endif
-        FREQ_LOCK_LAST
+        
 };
 
 enum {
