@@ -4,7 +4,7 @@
 # 1 = enable
 #
 ENABLE_CLANG                  := 0
-ENABLE_SWD                    := 1
+ENABLE_SWD                    := 0
 ENABLE_OVERLAY                := 0
 ENABLE_LTO                    := 1
 ENABLE_UART                   := 1
@@ -16,7 +16,7 @@ ENABLE_VOX                    := 1
 ENABLE_ALARM                  := 0
 ENABLE_TX1750                 := 1
 ENABLE_PWRON_PASSWORD         := 0
-ENABLE_BIG_FREQ               := 1
+ENABLE_BIG_FREQ               := 0
 ENABLE_SMALL_BOLD             := 1
 ENABLE_KEEP_MEM_NAME          := 1
 ENABLE_WIDE_RX                := 1
