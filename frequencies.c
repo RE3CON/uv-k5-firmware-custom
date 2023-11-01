@@ -19,8 +19,8 @@
 #include "settings.h"
 
 // the BK4819 has 2 bands it covers, 18MHz ~ 630MHz and 760MHz ~ 1300MHz
-const freq_band_table_t BX4819_band1 = { 1800000,  63000000};
-const freq_band_table_t BX4819_band2 = {84000000, 130000000};
+const freq_band_table_t BX4819_band1 = { 1400000,  63700000};
+const freq_band_table_t BX4819_band2 = {75500000, 187900000};
 
 const freq_band_table_t frequencyBandTable[7] =
 {
@@ -48,16 +48,16 @@ const freq_band_table_t frequencyBandTable[7] =
 #ifdef ENABLE_NOAA
 	const uint32_t NoaaFrequencyTable[10] =
 	{
-		16255000,
-		16240000,
-		16247500,
-		16242500,
-		16245000,
-		16250000,
-		16252500,
-		16152500,
-		16177500,
-		16327500
+		44600625,
+		44601875,
+		44603125,
+		44604375,
+		44605625,
+		44606875,
+		44608125,
+		44609375,
+		44610625,
+		44611875
 	};
 #endif
 
@@ -197,6 +197,17 @@ int TX_freq_check(const uint32_t Frequency)
 			if (Frequency >= 40000000 && Frequency < 43800000)
 				return 0;
 			break;
+		
+		#ifdef ENABLE_TX_UNLOCK
+			case FREQ_LOCK_TX_UNLOCK:
+			{
+				unsigned int i;
+				for (i = 0; i < ARRAY_SIZE(FREQ_BAND_TABLE); i++)
+					if (Frequency >= FREQ_BAND_TABLE[i].lower && Frequency < FREQ_BAND_TABLE[i].upper)
+						return 0;
+				break;
+			}
+		#endif
 	}
 
 	// dis-allowed TX frequency
