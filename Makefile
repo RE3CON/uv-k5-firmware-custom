@@ -4,7 +4,7 @@
 # 1 = enable
 #
 ENABLE_CLANG                  := 0
-ENABLE_SWD                    := 0
+ENABLE_SWD                    := 1
 ENABLE_OVERLAY                := 0
 ENABLE_LTO                    := 1
 ENABLE_UART                   := 1
@@ -14,13 +14,14 @@ ENABLE_NOAA                   := 0
 ENABLE_VOICE                  := 0
 ENABLE_VOX                    := 1
 ENABLE_ALARM                  := 0
-ENABLE_TX1750                 := 0
+ENABLE_TX1750                 := 1
 ENABLE_PWRON_PASSWORD         := 0
 ENABLE_BIG_FREQ               := 1
 ENABLE_SMALL_BOLD             := 1
 ENABLE_KEEP_MEM_NAME          := 1
 ENABLE_WIDE_RX                := 1
-ENABLE_TX_WHEN_AM             := 0
+ENABLE_TX_WHEN_AM             := 1
+ENABLE_TX_UNLOCK              := 1
 ENABLE_F_CAL_MENU             := 0
 ENABLE_CTCSS_TAIL_PHASE_SHIFT := 0
 ENABLE_BOOT_BEEPS             := 0
@@ -266,6 +267,11 @@ endif
 ifeq ($(ENABLE_TX_WHEN_AM),1)
 	CFLAGS  += -DENABLE_TX_WHEN_AM
 endif
+
+ifeq ($(ENABLE_TX_UNLOCK),1)
+	CFLAGS  += -DENABLE_TX_UNLOCK
+endif
+
 ifeq ($(ENABLE_F_CAL_MENU),1)
 	CFLAGS  += -DENABLE_F_CAL_MENU
 endif
