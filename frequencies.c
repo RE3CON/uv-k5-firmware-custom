@@ -197,17 +197,12 @@ int TX_freq_check(const uint32_t Frequency)
 			if (Frequency >= 40000000 && Frequency < 43800000)
 				return 0;
 			break;
-		
 		#ifdef ENABLE_TX_UNLOCK
-			case FREQ_LOCK_TX_UNLOCK:
-			{
-				unsigned int i;
-				for (i = 0; i < ARRAY_SIZE(FREQ_BAND_TABLE); i++)
-					if (Frequency >= FREQ_BAND_TABLE[i].lower && Frequency < FREQ_BAND_TABLE[i].upper)
-						return 0;
-				break;
-			}
+		case FREQ_LOCK_TX_UNLOCK:
+				return 0;
+			break;		
 		#endif
+		
 	}
 
 	// dis-allowed TX frequency
