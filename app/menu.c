@@ -245,11 +245,12 @@ int MENU_GetLimits(uint8_t menu_id, int32_t *pMin, int32_t *pMax)
 			*pMin = 0;
 			*pMax = ARRAY_SIZE(gSubMenu_OFF_ON) - 1;
 			break;
+		
                 case MENU_AM:
 			*pMin = 0;
 			*pMax = ARRAY_SIZE(gModulationStr) - 1;
 			break;
-
+			
 		case MENU_SCR:
 			*pMin = 0;
 			*pMax = ARRAY_SIZE(gSubMenu_SCRAMBLER) - 1;
@@ -1609,7 +1610,7 @@ static void MENU_Key_STAR(const bool bKeyPressed, const bool bKeyHeld)
 	#ifdef ENABLE_NOAA
 		if (!IS_NOAA_CHANNEL(gRxVfo->CHANNEL_SAVE) && gRxVfo->Modulation == MODULATION_FM)
 	#else
-		if (gRxVfo->AM_mode == 0)
+		if (gRxVfo->Modulation ==  MODULATION_FM)
 	#endif
 	{
 		if (GetCurrentMenuId() == MENU_R_CTCS || GetCurrentMenuId() == MENU_R_DCS)
