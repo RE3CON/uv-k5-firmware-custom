@@ -48,7 +48,8 @@ jobs:
 
     - name: Get the date
       id: date
-      run: echo "{name}={date +'%A %Y-%m-%d %H:%M:%S'}" >> $GITHUB_OUTPUT
+  #    run: echo "{name}={value}" >> "$GITHUB_OUTPUT"
+      run: echo "name=$(date +'%a %Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
       
  #   - name: Get the date
  #     id: date
