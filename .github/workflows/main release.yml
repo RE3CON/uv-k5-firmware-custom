@@ -53,7 +53,7 @@ jobs:
  
     - name: Get the date
       id: date
-      run: echo "::set-output name=date::$(date +'%A %d.%m.Y %H:%M')" #>> $GITHUB_OUTPUT
+      run: echo "::set-output name=date::$(date +'%A %d.%m.y %H:%M (Z)')" #>> $GITHUB_OUTPUT
 #     run: echo "::set-output name=date::$(date +'%Y-%m-%d')"     
 
     - name: 'Add unpacked FW to release'
@@ -61,7 +61,7 @@ jobs:
       with:
         file: firmware.bin
         asset_name: ${{ format('firmware.raw_0.{0}.bin', github.run_number) }}
-        tag: ${{ format('release-0.{0}', github.run_number) }}
+        tag: ${{ format('release-{0}', github.run_number) }}
         release_name: ${{ format('Build 0.{0}, {1}', github.run_number, steps.date.outputs.date) }}
   
     - name: 'Add packed FW to release'
