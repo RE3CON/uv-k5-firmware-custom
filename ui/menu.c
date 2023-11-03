@@ -270,6 +270,18 @@ const char gSubMenu_RESET[2][4] =
 	"ALL"
 };
 
+#ifdef ENABLE_TX_UNLOCK
+const char gSubMenu_F_LOCK[7][9] =
+{
+	"OFF",
+	"FCC",
+	"CE",
+	"GB",
+	"430",
+	"438",
+        "UNLOCKED"
+};
+#else
 const char gSubMenu_F_LOCK[6][4] =
 {
 	"OFF",
@@ -279,7 +291,7 @@ const char gSubMenu_F_LOCK[6][4] =
 	"430",
 	"438"
 };
-
+#endif
 const char gSubMenu_BACKLIGHT[8][7] =
 {
 	"OFF",
