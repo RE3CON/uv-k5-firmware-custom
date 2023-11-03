@@ -1,4 +1,4 @@
-/* Copyright 2023 Dual Tachyon
+ /* Copyright 2023 Dual Tachyon
  * https://github.com/DualTachyon
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,9 +31,9 @@ void ST7565_BlitFullScreen(void);
 void ST7565_BlitStatusLine(void);
 void ST7565_FillScreen(uint8_t Value);
 void ST7565_Init(const bool full);
+void ST7565_FixInterfGlitch(void);
 void ST7565_HardwareReset(void);
 void ST7565_SelectColumnAndLine(uint8_t Column, uint8_t Line);
 void ST7565_WriteByte(uint8_t Value);
 
 #endif
-
