@@ -53,7 +53,7 @@ jobs:
  
     - name: Get the date
       id: date
-      run: echo "::set-output name=date::$(date +'%A %d.%m.y %H:%M (Z)')" #>> $GITHUB_OUTPUT
+      run: echo "::set-output name=date::$(date +'%A %d.%m.%y %H:%M (%Z)')" #>> $GITHUB_OUTPUT
 #     run: echo "::set-output name=date::$(date +'%Y-%m-%d')"     
 
     - name: 'Add unpacked FW to release'
