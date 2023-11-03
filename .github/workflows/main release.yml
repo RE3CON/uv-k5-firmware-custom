@@ -46,12 +46,12 @@ jobs:
     - name: rename
       run: mv firmware.packed.bin firmware_packed${{ github.event.release.tag_name }}.bin
 
+    - name: set-output
+      run: echo "{name}={value}" >> $GITHUB_OUTPUT
+      
     - name: Get the date
       id: date
       run: echo "::set-output name=date::$(date +'%a %Y-%m-%d %H:%M:%S')"
-
-    - name: Increase build
-      run: echo "github.run_number=$(($github.run_number+1938))" 
 
     - name: 'Add unpacked FW to release'
       uses: svenstaro/upload-release-action@v2
@@ -68,4 +68,3 @@ jobs:
         asset_name: ${{ format('firmware_packed_v{0}.bin', github.run_number) }}
         tag: ${{ format('release-{0}', github.run_number) }}
         release_name: ${{ format('Release {0}, {1}', github.run_number, steps.date.outputs.date) }}
-#created_at
