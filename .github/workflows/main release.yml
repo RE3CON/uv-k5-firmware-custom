@@ -46,14 +46,15 @@ jobs:
     - name: rename
       run: mv firmware.packed.bin firmware_packed${{ github.event.release.tag_name }}.bin
 
+  #  - name: Get the date
+  #    id: date
+  #    run: echo "{name}={value}" >> "$GITHUB_OUTPUT"
+ #     run: echo "name=$(date +'%a %Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
+ 
     - name: Get the date
       id: date
-  #    run: echo "{name}={value}" >> "$GITHUB_OUTPUT"
-      run: echo "name=$(date +'%a %Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
-      
- #   - name: Get the date
- #     id: date
- #     run: echo "::set-output name=date::$(date +'%A %Y-%m-%d %H:%M:%S')"
+      run: echo "::set-output name=date::$(date +'%A %Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
+#     run: echo "::set-output name=date::$(date +'%Y-%m-%d')"     
 
     - name: 'Add unpacked FW to release'
       uses: svenstaro/upload-release-action@v2
