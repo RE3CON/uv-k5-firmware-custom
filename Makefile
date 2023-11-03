@@ -1,4 +1,3 @@
-
 # compile options (see README.md for descriptions)
 # 0 = disable
 # 1 = enable
@@ -37,7 +36,7 @@ ENABLE_AUDIO_BAR              := 1
 ENABLE_COPY_CHAN_TO_VFO       := 0
 ENABLE_SPECTRUM               := 1
 ENABLE_REDUCE_LOW_MID_TX_POWER:= 0
-
+ENABLE_BYP_RAW_DEMODULATORS   := 0
 #############################################################
 
 TARGET = firmware
@@ -323,6 +322,9 @@ endif
 ifeq ($(ENABLE_BAND_SCOPE),1)
 	CFLAGS += -DENABLE_BAND_SCOPE
 endif
+ifeq ($(ENABLE_BYP_RAW_DEMODULATORS),1)
+	CFLAGS  += -DENABLE_BYP_RAW_DEMODULATORS
+endif
 ifeq ($(ENABLE_REDUCE_LOW_MID_TX_POWER),1)
 	CFLAGS  += -DENABLE_REDUCE_LOW_MID_TX_POWER
 endif
@@ -342,26 +344,54 @@ ifeq ($(ENABLE_LTO),0)
 	# Throw away unneeded func/data sections like LTO does
 	LDFLAGS += -Wl,--gc-sections
 endif
-
 ifeq ($(DEBUG),1)
 	ASFLAGS += -g
 	CFLAGS  += -g
 	LDFLAGS += -g
 endif
-
 INC =
 INC += -I $(TOP)
 INC += -I $(TOP)/external/CMSIS_5/CMSIS/Core/Include/
 INC += -I $(TOP)/external/CMSIS_5/Device/ARM/ARMCM0/Include
-
 LIBS =
-
 DEPS = $(OBJS:.o=.d)
+
+ifdef OS
+   RM = del /Q
+   FixPath = $(subst /,\,$1)
+   WHERE = where
+else
+   ifeq ($(shell uname), Linux)
+      RM = rm -f
+      FixPath = $1
+	  WHERE = which
+   endif
+endif
+
+ifneq (, $(shell $(WHERE) python))
+    MY_PYTHON := python
+else ifneq (, $(shell $(WHERE) python3))
+    MY_PYTHON := python3
+endif
+
+ifdef MY_PYTHON
+    HAS_CRCMOD := $(shell $(MY_PYTHON) -c "import crcmod" 2>&1)
+endif
 
 all: $(TARGET)
 	$(OBJCOPY) -O binary $< $<.bin
-	-python fw-pack.py $<.bin $(GIT_HASH) $<.packed.bin
-	-python3 fw-pack.py $<.bin $(GIT_HASH) $<.packed.bin
+ifndef MY_PYTHON
+	$(info )
+	$(info !!!!!!!! PYTHON NOT FOUND, *.PACKED.BIN WON'T BE BUILT)
+	$(info )
+else ifneq (,$(HAS_CRCMOD))
+	$(info )
+	$(info !!!!!!!! CRCMOD NOT INSTALLED, *.PACKED.BIN WON'T BE BUILT)
+	$(info !!!!!!!! run: pip install crcmod)
+	$(info )
+else
+	-$(MY_PYTHON) fw-pack.py $<.bin $(GIT_HASH) $<.packed.bin
+endif	
 	$(SIZE) $<
 
 debug:
@@ -388,4 +418,4 @@ bsp/dp32g030/%.h: hardware/dp32g030/%.def
 -include $(DEPS)
 
 clean:
-	rm -f $(TARGET).bin $(TARGET).packed.bin $(TARGET) $(OBJS) $(DEPS)
+	$(RM) $(call FixPath, $(TARGET).bin $(TARGET).packed.bin $(TARGET) $(OBJS) $(DEPS))
