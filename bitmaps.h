@@ -47,4 +47,3 @@ extern const uint8_t BITMAP_ScanList2[6];
 extern const uint8_t BITMAP_compand[6];
 
 #endif
- 
