@@ -1,4 +1,4 @@
-/* Copyright 2023 Dual Tachyon
+ /* Copyright 2023 Dual Tachyon
  * https://github.com/DualTachyon
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,6 +30,7 @@
 #include "driver/bk4819.h"
 #include "driver/gpio.h"
 #include "driver/system.h"
+#include "driver/st7565.h"
 #include "frequencies.h"
 #include "functions.h"
 #include "helper/battery.h"
@@ -49,7 +50,7 @@ void FUNCTION_Init(void)
 	{
 		gCurrentCodeType = gSelectedCodeType;
 		if (gCssScanMode == CSS_SCAN_MODE_OFF)
-			gCurrentCodeType = gRxVfo->AM_mode ? CODE_TYPE_OFF : gRxVfo->pRX->CodeType;
+			gCurrentCodeType = (gRxVfo->Modulation != MODULATION_FM) ? CODE_TYPE_OFF : gRxVfo->pRX->CodeType;
 	}
 	#ifdef ENABLE_NOAA
 		else
@@ -105,6 +106,7 @@ void FUNCTION_Select(FUNCTION_Type_t Function)
 
 			if (PreviousFunction == FUNCTION_TRANSMIT)
 			{
+				ST7565_FixInterfGlitch();
 				gVFO_RSSI_bar_level[0] = 0;
 				gVFO_RSSI_bar_level[1] = 0;
 			}
@@ -254,4 +256,4 @@ void FUNCTION_Select(FUNCTION_Type_t Function)
 	#if defined(ENABLE_FMRADIO)
 		gFM_RestoreCountdown_10ms = 0;
 	#endif
-}
+} 
