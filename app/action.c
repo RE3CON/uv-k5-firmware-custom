@@ -324,6 +324,14 @@ void ACTION_Scan(bool bRestart)
 	}
 #endif
 
+void ACTION_SwitchDemodul(void)
+{
+	gTxVfo->Modulation++;
+	if(gTxVfo->Modulation == MODULATION_UKNOWN)
+		gTxVfo->Modulation = MODULATION_FM;
+	gRequestSaveChannel = 1;
+}
+
 void ACTION_Handle(KEY_Code_t Key, bool bKeyPressed, bool bKeyHeld)
 {
 	if (gScreenToDisplay == DISPLAY_MAIN && gDTMF_InputMode) // entering DTMF code
