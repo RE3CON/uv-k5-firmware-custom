@@ -48,10 +48,10 @@ jobs:
 
     - name: Get the date
       id: date
-      run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%i:%s')"
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%M:%S')"
 
     - name: Increase build
-      run: echo "GITHUB_RUN_NUMBER_WITH_OFFSET=$(($GITHUB_RUN_NUMBER+1938))" 
+      run: echo "github_run_number_adj=$(($github_run_number+1938))" 
 
     - name: 'Add unpacked FW to release'
       uses: svenstaro/upload-release-action@v2
