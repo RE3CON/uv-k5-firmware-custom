@@ -1,4 +1,4 @@
-/* Copyright 2023 Dual Tachyon
+ /* Copyright 2023 Dual Tachyon
  * https://github.com/DualTachyon
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -270,18 +270,6 @@ const char gSubMenu_RESET[2][4] =
 	"ALL"
 };
 
-#ifdef ENABLE_TX_UNLOCK
-const char gSubMenu_F_LOCK[7][9] =
-{
-	"OFF",
-	"FCC",
-	"CE",
-	"GB",
-	"430",
-	"438",
-        "UNLOCKED"
-};
-#else
 const char gSubMenu_F_LOCK[6][4] =
 {
 	"OFF",
@@ -291,7 +279,6 @@ const char gSubMenu_F_LOCK[6][4] =
 	"430",
 	"438"
 };
-#endif
 
 const char gSubMenu_BACKLIGHT[8][7] =
 {
@@ -351,7 +338,6 @@ const char gSubMenu_SCRAMBLER[11][7] =
 	"3500Hz"
 };
 
-
 const t_sidefunction SIDEFUNCTIONS[] =
 {
 	{"NONE",			ACTION_OPT_NONE},
@@ -373,7 +359,8 @@ const t_sidefunction SIDEFUNCTIONS[] =
 #endif
 	{"LOCK\nKEYPAD",	ACTION_OPT_KEYLOCK},
 	{"SWITCH\nVFO",		ACTION_OPT_A_B},
-	{"VFO/MR",		ACTION_OPT_VFO_MR},
+	{"VFO/MR",			ACTION_OPT_VFO_MR},
+	{"SWITCH\nDEMODUL",	ACTION_OPT_SWITCH_DEMODUL},
 };
 const t_sidefunction* gSubMenu_SIDEFUNCTIONS = SIDEFUNCTIONS;
 const uint8_t gSubMenu_SIDEFUNCTIONS_size = ARRAY_SIZE(SIDEFUNCTIONS);
@@ -627,7 +614,7 @@ void UI_DisplayMenu(void)
 			break;	
 
 		case MENU_AM:
-			strcpy(String, (gSubMenuSelection == 0) ? "FM" : "AM");
+			strcpy(String, gModulationStr[gSubMenuSelection]);
 			break;
 
 		#ifdef ENABLE_AM_FIX_TEST1
