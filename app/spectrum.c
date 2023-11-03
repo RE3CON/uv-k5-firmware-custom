@@ -387,6 +387,7 @@ static void UpdatePeakInfo() {
 static void Measure() { rssiHistory[scanInfo.i] = scanInfo.rssi = GetRssi(); }
 
 // Update things by keypress
+
 static uint16_t dbm2rssi(int dBm)
 {
   return (dBm + 160)*2;
@@ -1175,4 +1176,4 @@ void APP_RunSpectrum() {
   while (isInitialized) {
     Tick();
   }
-}
+} 
