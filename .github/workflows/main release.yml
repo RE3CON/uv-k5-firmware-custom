@@ -24,7 +24,8 @@ jobs:
     - name: arm-none-eabi-gcc
       uses: carlosperate/arm-none-eabi-gcc-action@v1
       with:
-        release: '11.3.Rel1'
+        release: '12.2.Rel1'
+       # release: '11.3.Rel1'
        # release: '11.2-2022.02'
 
     - name: Install Python dependencies
@@ -50,12 +51,12 @@ jobs:
   #  - name: Get the date
   #    id: date
   #    run: echo "{name}={value}" >> "$GITHUB_OUTPUT"
- #     run: echo "output=date$(date +'%a %Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
  
     - name: Get the date
       id: date
-      run: echo "::set-output name=date::$(date +'%A %d.%m.%Y %H:%M - %Z')" #>> $GITHUB_OUTPUT
-#     run: echo "::set-output name=date::$(date +'%Y-%m-%d')"     
+ #    run: echo "::set-output name=date::$(date +'%A %d.%m.%Y %H:%M - %Z')" #>> $GITHUB_OUTPUT
+ #    run: echo "::set-output name=date::$(date +'%Y-%m-%d')"  
+      run: echo "date=$(date +'%A %d.%m.%Y %H:%M - %Z')" >> $GITHUB_OUTPUT
 
     - name: 'Add unpacked FW to release'
       uses: svenstaro/upload-release-action@v2
