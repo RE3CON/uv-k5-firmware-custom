@@ -36,7 +36,7 @@ ENABLE_AUDIO_BAR              := 1
 ENABLE_COPY_CHAN_TO_VFO       := 0
 ENABLE_SPECTRUM               := 1
 ENABLE_REDUCE_LOW_MID_TX_POWER:= 0
-ENABLE_BYP_RAW_DEMODULATORS   := 0
+ENABLE_BYP_RAW_DEMODULATORS   := 1
 #############################################################
 
 TARGET = firmware
