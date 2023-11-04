@@ -24,7 +24,7 @@ jobs:
     - name: arm-none-eabi-gcc
       uses: carlosperate/arm-none-eabi-gcc-action@v1
       with:
-        release: 'latest'
+        release: '12.3.Rel1'
        # release: '11.3.Rel1'
        # release: '11.2-2022.02'
 
