@@ -23,7 +23,7 @@
 #include "frequencies.h"
 #include <helper/battery.h>
 #include "radio.h"
-
+#include <driver/backlight.h>
 enum POWER_OnDisplayMode_t {
 	POWER_ON_DISPLAY_MODE_FULL_SCREEN = 0,
 	POWER_ON_DISPLAY_MODE_MESSAGE,
@@ -89,6 +89,7 @@ enum {
 	ACTION_OPT_A_B,
 	ACTION_OPT_VFO_MR,
         ACTION_OPT_SWITCH_DEMODUL,
+	ACTION_OPT_BLMIN_TMP_OFF, //BackLight Minimum Temporay OFF
 	ACTION_OPT_LEN
 };
 
@@ -235,6 +236,7 @@ typedef struct {
 
 	uint8_t 			  KEY_M_LONG_PRESS_ACTION;
 	uint8_t               BACKLIGHT_MIN;
+        BLMIN_STAT_t	      BACKLIGHT_MIN_STAT;
 	uint8_t               BACKLIGHT_MAX;
 	BATTERY_Type_t		  BATTERY_TYPE;
 } EEPROM_Config_t;
