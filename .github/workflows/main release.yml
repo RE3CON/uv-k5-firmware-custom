@@ -47,13 +47,13 @@ jobs:
       run: mv firmware.packed.bin firmware_packed${{ github.event.release.tag_name }}.bin
 
     - name: Set color
-      id: color 
-      run: echo "COLOR=yellow" >> "$GITHUB_OUTPUT"
-        
+      id: color-selector
+      run: echo "SELECTED_COLOR=blue" >> "$GITHUB_OUTPUT"
     - name: Get color
       env:
-        COLOR: ${{ color.outputs.COLOR }}
-      run: echo "The selected color is $COLOR"
+          SELECTED_COLOR: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
+      run: echo "The selected color is $SELECTED_COLOR"
+
  
     - name: Get the date
       id: date
@@ -66,7 +66,7 @@ jobs:
       with:
         file: firmware.bin
         asset_name: ${{ format('firmware_raw_0.{0}.bin', github.run_number) }}
-        tag: ${{ format('release-{0}', github.run_number) }}
+        tag: ${{ format('release-{0}', github.run_number, SELECTED_COLOR) }}
         release_name: ${{ format('Build 0.{0}, {1}', github.run_number, steps.date.outputs.date) }}
   
     - name: 'Add packed FW to release'
@@ -74,5 +74,5 @@ jobs:
       with:
         file: firmware_packed${{ github.event.release.tag_name }}.bin
         asset_name: ${{ format('firmware_packed_0.{0}.bin', github.run_number) }}
-        tag: ${{ format('release-{0}', github.run_number) }}
+        tag: ${{ format('release-{0}', github.run_number, SELECTED_COLOR) }}
         release_name: ${{ format('Build 0.{0}, {1}', github.run_number, steps.date.outputs.date, color.outputs.COLOR) }}
