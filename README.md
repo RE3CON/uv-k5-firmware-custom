@@ -9,6 +9,10 @@
  - some other smaller mods introduced by [Egzumer](https://github.com/egzumer/uv-k5-firmware-custom)
  - @RE3CON Multiband full freq ranges 14 MHz - 1789 MHz
 
+`set in Makefile:  
+
+ENABLE_TX_UNLOCK = 1`
+
  Frequency Range full TX UNLOCK under Hidden Menu -> F-Lock 
 
 (Caution about strong interferences on other frequencies by 
