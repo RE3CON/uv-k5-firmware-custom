@@ -7,7 +7,12 @@
  - many of @OneOfEleven mods, including AM fix
  - @fagci spectrum analyzer (**F+5** to turn on)
  - some other smaller mods introduced by [Egzumer](https://github.com/egzumer/uv-k5-firmware-custom)
- - Multiband 18 MHz - 1300 MHz Frequency Range full TX UNLOCK under Hidden Menu -> F-Lock (Caution about strong interferences on other frequencies by TX)
+ - @RE3CON Multiband full freq ranges 14 MHz - 1789 MHz
+
+ Frequency Range full TX UNLOCK under Hidden Menu -> F-Lock 
+
+(Caution about strong interferences on other frequencies by 
+TX)
 
  Go to [Wiki](https://github.com/egzumer/uv-k5-firmware-custom/wiki) to learn more.
 
@@ -85,7 +90,8 @@ ENABLE_KEEP_MEM_NAME          := 1       maintain channel name when (re)saving m
 ENABLE_WIDE_RX                := 1       full 18MHz to 1300MHz RX (though front-end/PA not designed for full range)
 ENABLE_TX_WHEN_AM             := 1       allow TX (always FM) when RX is set to AM
 ENABLE_F_CAL_MENU             := 0       enable/disable the radios hidden frequency calibration menu
-ENABLE_TX_UNLOCK              := 1       TX all Bands 18 MHz to 1300 MHz. Hidden Menu -> F-Lock -> Select UNLOCKED. (TX harmonic content will cause interference to other services!)
+ENABLE_TX_UNLOCK              := 1       TX all Bands 14 MHz to 1789 MHz. Hidden Menu -> F-Lock -> Select UNLOCKED. 
+(TX harmonic content will cause interference to other services!)
 ENABLE_CTCSS_TAIL_PHASE_SHIFT := 1       standard CTCSS tail phase shift rather than QS's own 55Hz tone method
 ENABLE_BOOT_BEEPS             := 0       gives user audio feedback on volume knob position at boot-up
 ENABLE_SHOW_CHARGE_LEVEL      := 1       show the charge level when the radio is on charge
