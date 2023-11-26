@@ -1,4 +1,4 @@
-name: 'release main'
+name: 'main src release'
 on:
   push:
     branches: [ "main" ]
