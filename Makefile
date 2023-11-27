@@ -21,7 +21,7 @@ ENABLE_SMALL_BOLD             := 1
 ENABLE_KEEP_MEM_NAME          := 1
 ENABLE_WIDE_RX                := 1
 ENABLE_TX_WHEN_AM             := 1
-ENABLE_F_CAL_MENU             := 1
+ENABLE_F_CAL_MENU             := 0
 ENABLE_CTCSS_TAIL_PHASE_SHIFT := 0
 ENABLE_BOOT_BEEPS             := 0
 ENABLE_SHOW_CHARGE_LEVEL      := 1
@@ -37,7 +37,7 @@ ENABLE_COPY_CHAN_TO_VFO       := 1
 ENABLE_SPECTRUM               := 1
 ENABLE_REDUCE_LOW_MID_TX_POWER:= 0
 ENABLE_BYP_RAW_DEMODULATORS   := 0
-ENABLE_BLMIN_TMP_OFF	      := 1
+ENABLE_BLMIN_TMP_OFF	      := 0
 #############################################################
 
 TARGET = firmware
