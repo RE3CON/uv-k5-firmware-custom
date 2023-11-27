@@ -760,18 +760,10 @@ void MENU_AcceptSetting(void)
 			gSetting_350TX = gSubMenuSelection;
 			break;
 
-		case MENU_F_LOCK: {
-			if(gSubMenuSelection == F_LOCK_NONE) { // select 10 times to enable
-				gUnlockAllTxConfCnt++;
-				if(gUnlockAllTxConfCnt < 10)
-					return;
-			}
-			else
-				gUnlockAllTxConfCnt = 0;
-
-			gSetting_F_LOCK = gSubMenuSelection;
+		case MENU_F_LOCK:
+		        gSetting_F_LOCK = gSubMenuSelection;
 			break;
-		}
+
 		case MENU_200TX:
 			gSetting_200TX = gSubMenuSelection;
 			break;
